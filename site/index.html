@@ -3,29 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="2;url=dashboard.html">
+  <meta name="description" content="Radar Global de Maquinários: sinais, tendências e protótipos.">
   <title>Radar Global de Maquinários</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="hero">
-    <p class="eyebrow">RADAR GLOBAL · PROTÓTIPO</p>
-    <h1>Do sinal global ao maquinário testável</h1>
-    <p>Monitoramento de tendências, evidências, tecnologias e oportunidades para criar protótipos reais.</p>
-  </header>
-  <main class="container">
-    <section class="controls" aria-label="Filtros">
-      <label>Tema <select id="topic"><option value="all">Todos</option><option value="robotics">Robótica</option><option value="coatings">Revestimentos</option></select></label>
-      <label>Confiança <select id="confidence"><option value="all">Todas</option><option value="high">Alta</option><option value="medium">Média</option><option value="low">Baixa</option></select></label>
-      <button id="refresh">Atualizar dados</button>
-    </section>
-    <section class="grid">
-      <article class="card"><span>Sinais monitorados</span><strong id="signalCount">—</strong></article>
-      <article class="card"><span>Confiança média</span><strong id="confidenceScore">—</strong></article>
-      <article class="card"><span>Temas ativos</span><strong id="topicCount">—</strong></article>
-    </section>
-    <section class="panel"><h2>Força dos sinais</h2><div id="barChart" class="chart" aria-label="Gráfico de barras"></div></section>
-    <section class="panel"><h2>Mapa de evidências</h2><div id="signalList" class="signals"></div></section>
+  <main class="redirect-page">
+    <div class="redirect-card">
+      <p class="eyebrow">RADAR GLOBAL</p>
+      <h1>Do sinal global ao maquinário testável.</h1>
+      <p>Preparando o painel de tendências, evidências e oportunidades.</p>
+      <div class="loader" aria-hidden="true"></div>
+      <p class="redirect-status" aria-live="polite">Você será redirecionado em instantes.</p>
+      <a class="redirect-link" href="dashboard.html">Abrir o dashboard agora</a>
+    </div>
   </main>
-  <script src="app.js" type="module"></script>
+  <script>
+    window.setTimeout(() => {
+      window.location.replace('dashboard.html');
+    }, 2000);
+  </script>
 </body>
 </html>
