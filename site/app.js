@@ -1,0 +1,35 @@
+const fallback = [
+  {title:'Exemplo de sinal de automação industrial',topic:'robotics',score:.72,confidence:'medium',date:'2026-09-20',source:'demo'},
+  {title:'Exemplo de pesquisa sobre revestimentos',topic:'coatings',score:.58,confidence:'low',date:'2026-09-20',source:'demo'}
+];
+
+const labels = {robotics:'Robótica', coatings:'Revestimentos'};
+let signals = fallback;
+
+async function load(){
+  try{
+    const r = await fetch('../data/sample-signals.json');
+    if(r.ok) signals = await r.json();
+  }catch{}
+  render();
+}
+
+function filtered(){
+  const topic = document.querySelector('#topic').value;
+  const confidence = document.querySelector('#confidence').value;
+  return signals.filter(s => (topic==='all'||s.topic===topic) && (confidence==='all'||s.confidence===confidence));
+}
+
+function render(){
+  const list = filtered();
+  document.querySelector('#signalCount').textContent = list.length;
+  document.querySelector('#confidenceScore').textContent = list.length ? Math.round(list.reduce((a,s)=>a+s.score,0)/list.length*100)+'%' : '—';
+  document.querySelector('#topicCount').textContent = new Set(list.map(s=>s.topic)).size;
+  document.querySelector('#barChart').innerHTML = list.map(s=>`<div class="bar-row"><span>${labels[s.topic]||s.topic}</span><div class="bar"><i style="width:${s.score*100}%"></i></div><span>${Math.round(s.score*100)}%</span></div>`).join('') || '<p>Nenhum sinal encontrado.</p>';
+  document.querySelector('#signalList').innerHTML = list.map(s=>`<div class="signal"><strong>${s.title}</strong><br><small>${labels[s.topic]||s.topic} · confiança ${s.confidence} · ${s.date} · ${s.source}</small></div>`).join('') || '<p>Nenhum registro.</p>';
+}
+
+document.querySelector('#topic').addEventListener('change',render);
+document.querySelector('#confidence').addEventListener('change',render);
+document.querySelector('#refresh').addEventListener('click',load);
+load();

@@ -1,0 +1,11 @@
+name = "radar-global-worker"
+main = "worker/src/index.js"
+compatibility_date = "2026-09-20"
+
+[triggers]
+crons = ["0 12 * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "radar-global"
+database_id = "COLE_O_ID_DO_D1"
