@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dashboard do Radar Global de Maquinários.">
+  <title>Dashboard · Radar Global</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero dashboard-hero">
+    <a class="back-link" href="index.html">← Início</a>
+    <p class="eyebrow">RADAR GLOBAL · DASHBOARD</p>
+    <h1>Sinais para criar o próximo maquinário.</h1>
+    <p>Acompanhe evidências, tendências e hipóteses testáveis em um único painel.</p>
+  </header>
+  <main class="container">
+    <section class="controls" aria-label="Filtros">
+      <label>Tema <select id="topic"><option value="all">Todos</option><option value="robotics">Robótica</option><option value="coatings">Revestimentos</option></select></label>
+      <label>Confiança <select id="confidence"><option value="all">Todas</option><option value="high">Alta</option><option value="medium">Média</option><option value="low">Baixa</option></select></label>
+      <button id="refresh">Atualizar dados</button>
+    </section>
+    <section class="grid">
+      <article class="card"><span>Sinais monitorados</span><strong id="signalCount">—</strong></article>
+      <article class="card"><span>Força média</span><strong id="confidenceScore">—</strong></article>
+      <article class="card"><span>Temas ativos</span><strong id="topicCount">—</strong></article>
+    </section>
+    <section class="panel"><div class="panel-heading"><h2>Força dos sinais</h2><span class="badge">protótipo</span></div><div id="barChart" class="chart" aria-label="Gráfico de barras"></div></section>
+    <section class="panel"><div class="panel-heading"><h2>Evidências recentes</h2><span id="lastUpdate" class="muted"></span></div><div id="signalList" class="signals"></div></section>
+  </main>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
